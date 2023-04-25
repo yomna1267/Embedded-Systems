@@ -38,20 +38,20 @@ int main(void){
 	int counter = 0;
 	while(1){
 		if(((PINA>>0)&1) == 0){
-			_delay_ms(500);
 			counter++;
 			if(counter > 9){
 				counter = 9;
 			}
 			PORTB = state[counter];
+			while(((PINA>>0)&1) == 0);
 		}
 		else if(((PINA>>1)&1) == 0){
-			_delay_ms(500);
 			counter--;
 			if(counter < 0){
 				counter = 0;
 			}
 			PORTB = state[counter];
+			while(((PINA>>1)&1) == 0);
 		}
 	}
 }
